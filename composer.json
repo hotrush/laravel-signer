@@ -1,6 +1,6 @@
 {
     "name": "hotrush/laravel-signer",
-    "description": "Package allows to create and validate signatures for laravel models.",
+    "description": "Package to create and validate signatures for laravel models.",
     "keywords": [
         "laravel",
         "laravel-signer"
@@ -43,7 +43,7 @@
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage --coverage-clover clover.xml",
+        "test-coverage": "vendor/bin/phpunit --coverage-clover clover.xml",
         "format": "vendor/bin/pint"
     },
     "config": {
