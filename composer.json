@@ -1,0 +1,67 @@
+{
+    "name": "hotrush/laravel-signer",
+    "description": "Package allows to create and validate signatures for laravel models.",
+    "keywords": [
+        "laravel",
+        "laravel-signer"
+    ],
+    "homepage": "https://github.com/hotrush/laravel-signer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hotrush",
+            "email": "johny64@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "spatie/laravel-package-tools": "^1.13.0",
+        "illuminate/contracts": "^9.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hotrush\\Signer\\": "src",
+            "Hotrush\\Signer\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hotrush\\Signer\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage --coverage-clover clover.xml",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hotrush\\Signer\\SignerServiceProvider"
+            ],
+            "aliases": {
+                "Signer": "Hotrush\\Signer\\Facades\\Signer"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
