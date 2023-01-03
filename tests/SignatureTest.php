@@ -29,6 +29,24 @@ class SignatureTest extends TestCase
         $this->assertEquals($payload, $signatureDecoded->payload);
     }
 
+    public function test_encoding_without_expiration(): void
+    {
+        $hash = $this->faker->uuid();
+        $expiresAt = null;
+        $payload = ['email' => $this->faker->email()];
+
+        $signature = (string) new Signature($hash, $expiresAt, $payload);
+
+        $this->assertNotEmpty($signature);
+
+        $signatureDecoded = Signature::decode($signature);
+
+        $this->assertInstanceOf(Signature::class, $signatureDecoded);
+        $this->assertEquals($hash, $signatureDecoded->hash);
+        $this->assertEquals(null, $signatureDecoded->expiresAt);
+        $this->assertEquals($payload, $signatureDecoded->payload);
+    }
+
     /**
      * @dataProvider decoding_errors_data
      */

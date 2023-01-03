@@ -24,7 +24,7 @@ final class Signature implements \Stringable
     {
         return base64_encode(json_encode([
             'hash' => $this->hash,
-            'expires_at' => $this->expiresAt->toAtomString(),
+            'expires_at' => $this->expiresAt?->toAtomString(),
             'payload' => $this->payload,
         ]));
     }
